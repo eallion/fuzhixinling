@@ -33,7 +33,7 @@ jobs:
       run: sudo apt-get install -y graphicsmagick
 
     - name: Build
-      run: thumbsup --input ./photos --output "./website" --title "福至心灵" --thumb-size 200 --large-size 1500 --original-photos true --original-videos false --albums-from "{YYYY/MM}" --sort-albums-by date --theme cards
+      run: thumbsup --input "./photos" --output "./website" --title "福至心灵" --thumb-size 200 --large-size 1500 --original-photos true --original-videos false --albums-from "{YYYY/MM}" --sort-albums-by date --theme cards
 
     - name: Deploy to GitHub
       uses: peaceiris/actions-gh-pages@v3
