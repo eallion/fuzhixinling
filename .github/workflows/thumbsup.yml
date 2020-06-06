@@ -36,7 +36,7 @@ jobs:
       run: thumbsup --input "./photos" --output "./website" --title "福至心灵" --theme flow --thumb-size 200 --large-size 1500
 
     - name: Create CNAME
-      run: echo 'fuzhixinling.com' > ./website/CNAME
+      run: echo 'www.fuzhixinling.com' > ./website/CNAME
 
     - name: Deploy to GitHub
       uses: peaceiris/actions-gh-pages@v3
