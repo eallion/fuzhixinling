@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="public/lightgallery/css/lg-exif.min.css" />
       <link rel="stylesheet" href="public/core.css" />
       <link rel="stylesheet" href="public/theme.css" />
+      <link rel="stylesheet" href="public/justifiedgallery/justifiedGallery.min.css" />
   </head>
 
   <body>
@@ -34,25 +35,25 @@
       <!--
         Nested albums, if any
       -->
-      <div id="albums">
-    <a href="Wallpaper.html" style="background-image: url('media/large/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg')">
-            <div class="info">
+      <div id="albums" class="justified-gallery">
+    <a href="Wallpaper.html">
+            <img src="media/small/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg" alt="">
+            <div class="caption" style="display: inline-block">
               <h3>Wallpaper</h3>
               <div class="summary">2 photos</div>
-              <div class="date">06 Jun 2020 - 06 Jun 2020</div>
             </div>
-          </a><a href="Avatar.html" style="background-image: url('media/large/Avatar/CharlesChin.jpg')">
-            <div class="info">
+          </a><a href="Avatar.html">
+            <img src="media/small/Avatar/CharlesChin.jpg" alt="">
+            <div class="caption" style="display: inline-block">
               <h3>Avatar</h3>
               <div class="summary">3 photos</div>
-              <div class="date">06 Jun 2020 - 06 Jun 2020</div>
             </div>
           </a>  </div>
     
       <!--
         All photos and videos
       -->
-      <ul id="media" class="clearfix">
+      <ul id="media" class="clearfix justified-gallery">
       </ul>
     
       <!--
@@ -75,6 +76,7 @@
     <script src="public/lightgallery/js/lg-thumbnail.js"></script>
     <script src="public/lightgallery/js/lg-video.js"></script>
     <script src="public/lightgallery/js/lg-exif.min.js"></script>
+    <script src="public/justifiedgallery/jquery.justifiedGallery.min.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -84,7 +86,23 @@
           loop : false,
           download: true,
           counter: true,
-          videojs: true
+          videojs: true,
+          exThumbImage: 'data-exthumbimage',
+        });
+
+        // Init justified gallery for albums
+        $("#albums").justifiedGallery({
+          margins: 10,
+          rowHeight: 300,
+          maxRowHeight: 325,
+        });
+
+        // Init justified gallery for photos
+        $("#media").justifiedGallery({
+          selector: '.albumList',
+          margins: 10,
+          rowHeight: 250,
+          maxRowHeight: 275,
         });
       });
     </script>

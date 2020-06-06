@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="public/lightgallery/css/lg-exif.min.css" />
       <link rel="stylesheet" href="public/core.css" />
       <link rel="stylesheet" href="public/theme.css" />
+      <link rel="stylesheet" href="public/justifiedgallery/justifiedGallery.min.css" />
   </head>
 
   <body>
@@ -34,42 +35,32 @@
       <!--
         Nested albums, if any
       -->
-      <div id="albums">
+      <div id="albums" class="justified-gallery">
       </div>
     
       <!--
         All photos and videos
       -->
-      <ul id="media" class="clearfix">
+      <ul id="media" class="clearfix justified-gallery">
           
-            <li data-src="media/large/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg"
-                data-sub-html=""
-                data-download-url="media/large/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg"
-                
-                data-filename="os_x_mavericks_wallpaper-2560x1600.jpg"
+          <div class="albumList"
+              data-sub-html=""
+              data-download-url="media/large/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg"data-src="media/large/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg"data-exthumbimage="media/thumbs/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg"
+              data-filename="os_x_mavericks_wallpaper-2560x1600.jpg"
           
-              >
-              <a href="media/large/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg">
-                <img src="media/thumbs/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg"
-                     width="200"
-                     height="200"
-                     alt="os_x_mavericks_wallpaper-2560x1600.jpg" />
+          ><a href="media/large/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg"><img src="media/small/Wallpaper/os_x_mavericks_wallpaper-2560x1600.jpg" alt="os_x_mavericks_wallpaper-2560x1600.jpg" />
               </a>
-            </li>      
-            <li data-src="media/large/Wallpaper/手机壁纸wallpaper.png"
-                data-sub-html=""
-                data-download-url="media/large/Wallpaper/手机壁纸wallpaper.png"
-                
-                data-filename="手机壁纸wallpaper.png"
           
-              >
-              <a href="media/large/Wallpaper/手机壁纸wallpaper.png">
-                <img src="media/thumbs/Wallpaper/手机壁纸wallpaper.png"
-                     width="200"
-                     height="200"
-                     alt="手机壁纸wallpaper.png" />
+          </div>      
+          <div class="albumList"
+              data-sub-html=""
+              data-download-url="media/large/Wallpaper/手机壁纸wallpaper.png"data-src="media/large/Wallpaper/手机壁纸wallpaper.png"data-exthumbimage="media/thumbs/Wallpaper/手机壁纸wallpaper.png"
+              data-filename="手机壁纸wallpaper.png"
+          
+          ><a href="media/large/Wallpaper/手机壁纸wallpaper.png"><img src="media/small/Wallpaper/手机壁纸wallpaper.png" alt="手机壁纸wallpaper.png" />
               </a>
-            </li>  </ul>
+          
+          </div>  </ul>
     
       <!--
         Optional footer
@@ -91,6 +82,7 @@
     <script src="public/lightgallery/js/lg-thumbnail.js"></script>
     <script src="public/lightgallery/js/lg-video.js"></script>
     <script src="public/lightgallery/js/lg-exif.min.js"></script>
+    <script src="public/justifiedgallery/jquery.justifiedGallery.min.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -100,7 +92,23 @@
           loop : false,
           download: true,
           counter: true,
-          videojs: true
+          videojs: true,
+          exThumbImage: 'data-exthumbimage',
+        });
+
+        // Init justified gallery for albums
+        $("#albums").justifiedGallery({
+          margins: 10,
+          rowHeight: 300,
+          maxRowHeight: 325,
+        });
+
+        // Init justified gallery for photos
+        $("#media").justifiedGallery({
+          selector: '.albumList',
+          margins: 10,
+          rowHeight: 250,
+          maxRowHeight: 275,
         });
       });
     </script>
