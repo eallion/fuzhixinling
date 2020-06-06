@@ -33,5 +33,14 @@ jobs:
       run: sudo apt-get install -y graphicsmagick
 
     - name: Build
-      run: thumbsup --input ./photos --output ./gallery --theme cards
+      run: thumbsup --input ./photos --output "./website" --title "福至心灵" --thumb-size 200 --large-size 1500 --original-photos true --original-videos false --albums-from "{YYYY/MM}" --sort-albums-by date --theme cards
 
+    - name: Deploy to GitHub
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.personal_token }}
+        external_repository: eallion/thumbsup
+        PUBLISH_BRANCH: public
+        PUBLISH_DIR: ./website
+        allow_empty_commit: true
+        commit_message: ${{ GitHub.event.head_commit.message }}
