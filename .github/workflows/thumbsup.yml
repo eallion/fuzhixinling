@@ -55,8 +55,7 @@ jobs:
         driver: oss
         region: cn-shanghai
         bucket: ${{ secrets.bucket }}
-        exclude: public/images,public/photos
-        dist: public
+        dist: website
       env:
         UPTOC_UPLOADER_AK: ${{ secrets.ACCESS_KEY_ID }}
         UPTOC_UPLOADER_SK: ${{ secrets.ACCESS_KEY_SECRET }}
